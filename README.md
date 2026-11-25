@@ -4,7 +4,7 @@ Romhack de *Super Mario World* (SNES, version US) sur le thème de la Bretagne :
 Mario traverse le Pays Bigouden, les Monts d'Arrée, les grottes de Morgat,
 Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 
-## État actuel (version 0.3 : textes, décors, objets et Mario)
+## État actuel (version 0.4 : Mario en marinière)
 
 ### Graphismes
 
@@ -27,9 +27,10 @@ Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 - **Objets** : le champignon est remplacé par une crêpe pliée en quatre, avec
   la confiture le long du pli. Le 1-up est la même crêpe avec une garniture
   verte.
-- **Mario** : en ciré jaune de marin (le suroît remplace la casquette) avec un
-  pantalon bleu marine, sur la carte comme dans les niveaux. Mario de feu est
-  en Gwenn ha Du : chemise blanche et salopette noire.
+- **Mario en marinière** : chemise blanche à rayures bleu marine, dessinées
+  dans toutes ses poses, casquette blanche de marin et salopette bleue (sur la
+  carte aussi). Mario de feu porte une marinière à rayures noires avec une
+  salopette noire : un vrai Gwenn ha Du.
 
 ![Captures](docs/captures.png)
 ![Niveau](docs/captures_niveau.png)
@@ -82,9 +83,11 @@ Les dessins sont de simples fichiers texte dans [`graphismes/`](graphismes/),
 un caractère par pixel (`.` = transparent, `1` à `7` = couleurs de la
 palette), avec en tête le fichier GFX et les tuiles 8×8 concernées. On peut
 les modifier à la main puis relancer `construire.py`. Les couleurs changées
-sont dans [`graphismes/palettes.txt`](graphismes/palettes.txt), et la coiffe
-de la Princesse est dessinée par `outils/coiffe.py`, qui repère toutes ses
-couronnes. Les graphismes sont recompressés (LC_LZ2) et remis à leur place
+sont dans [`graphismes/palettes.txt`](graphismes/palettes.txt). Deux
+retouches sont faites par programme sur toutes les poses : la coiffe de la
+Princesse (`outils/coiffe.py`, qui repère ses couronnes) et la marinière de
+Mario (`outils/mariniere.py`, qui repère sa chemise et y trace une rangée
+marine sur deux). Les graphismes sont recompressés (LC_LZ2) et remis à leur place
 d'origine.
 
 ### Captures d'écran automatiques
@@ -123,7 +126,8 @@ Zones de la ROM modifiées (aucun nouveau code ASM) :
 | GFX1B | piliers du fond des niveaux : ovales → grain de granit |
 | `$00:B0C8-$00:B0DF` | palette de fond n°1 : piliers → granit |
 | `$00:B25E` | buissons : croix beiges → fleurs d'ajonc jaunes |
-| `$00:B2CE-$00:B2D9`, `$00:B2F8-$00:B2FD` | Mario (ciré jaune, pantalon marine) et Mario de feu (Gwenn ha Du) |
+| GFX32 (`$08:8000`) | poses de Mario : rayures de la marinière (`outils/mariniere.py`) |
+| `$00:B2CE-$00:B2D7`, `$00:B2F8-$00:B2FD` | Mario (marinière blanche, rayures marine) et Mario de feu (Gwenn ha Du) |
 | `$00:B59C-$00:B5A1` | Mario sur la carte |
 | `$00:B3F6-$00:B3F9` | palette de la carte du Pays Bigouden : vert des collines → granit |
 | `$00:FFDC-$00:FFDF` | somme de contrôle recalculée |
@@ -142,8 +146,8 @@ Magic), sans mélanger les deux pour ces textes-là.
 Avec Lunar Magic (Windows) et les outils de SMW Central :
 
 - **Graphismes** : calvaires et phares dans les niveaux, bolée de cidre ou
-  kouign-amann pour d'autres objets, marinière à rayures pour Mario (demande
-  de redessiner toutes ses poses), Gwenn ha Du sur le panneau de fin de niveau.
+  kouign-amann pour d'autres objets, Gwenn ha Du sur le panneau de fin de
+  niveau.
 - **Palettes** : landes violettes (bruyère) pour les Monts d'Arrée, granit
   rose, mer verte et grise pour Ouessant.
 - **Carte** : retracer le monde aux contours de la péninsule bretonne.

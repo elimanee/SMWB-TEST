@@ -57,8 +57,8 @@ def run(rom, mode):
         carte(0, (0x100, 0x40))
         e.shot(os.path.join(OUT, "03_carte_principale.png"))
         zoom(e.screen(), (95, 25, 215, 95), 6).save(os.path.join(OUT, "04_phare.png"))
-        # niveau Pays Bigouden 1 : Mario en ciré, puis Mario de feu + crêpe en réserve
-        for nom, pouvoir, objet in (("08_niveau_cire.png", 1, 0), ("09_niveau_feu_crepe.png", 3, 1)):
+        # niveau Pays Bigouden 1 : Mario en marinière, puis Mario de feu + crêpe en réserve
+        for nom, pouvoir, objet in (("08_niveau_mariniere.png", 1, 0), ("09_niveau_feu_crepe.png", 3, 1)):
             e.load_state(patch_wram(patch_wram(pays, 0x0DB8, pouvoir), 0x0DBC, objet)); e.wait(2)
             e.press("LEFT", frames=6, after=120); e.press("A", frames=6, after=300)
             e.shot(os.path.join(OUT, nom))

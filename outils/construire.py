@@ -17,6 +17,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import bps
 import coiffe
+import mariniere
 import gfx
 import messages
 import noms_niveaux
@@ -52,6 +53,7 @@ def apply_graphics(rom):
         if num not in files:
             files[num] = gfx.read_gfx(rom, num)
     print("Coiffes bigoudènes : %d" % coiffe.apply(files))
+    print(mariniere.apply(rom))
     for num in sorted(files):
         print("  " + gfx.write_gfx(rom, num, files[num]))
         assert gfx.read_gfx(rom, num) == files[num], "relecture GFX%02X différente" % num

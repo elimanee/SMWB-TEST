@@ -20,22 +20,24 @@
 00B0DC = 112, 120, 136
 00B0DE = 160, 168, 176
 
-; --- Mario en ciré jaune de marin, pantalon bleu marine ($00:B2C8)
-00B2CE = 248, 200, 0      ; ciré / suroît : jaune
-00B2D6 = 184, 128, 0      ;   ombre
-00B2D8 = 248, 240, 120    ;   reflet
-00B2D0 = 16, 24, 72       ; pantalon bleu marine : ombre
-00B2D2 = 40, 56, 112      ;   bleu marine
-00B2D4 = 72, 104, 168     ;   reflet
+; --- Mario en marinière ($00:B2C8) : chemise et casquette blanches (bachi de
+; marin), rayures et salopette bleues. Les rayures sont dessinées par
+; outils/mariniere.py avec la couleur d'ombre de la salopette (bleu marine).
+00B2CE = 240, 240, 248    ; chemise / casquette : blanc
+00B2D6 = 168, 176, 200    ;   ombre
+00B2D0 = 16, 24, 80       ; bleu marine : rayures et ombre de la salopette
+00B2D2 = 48, 80, 176      ; salopette bleue
+00B2D4 = 104, 152, 224    ;   reflet
 
-; --- Mario de feu en Gwenn ha Du : chemise blanche, salopette noire ($00:B2F0)
+; --- Mario de feu en Gwenn ha Du : marinière blanche à rayures noires,
+; salopette noire ($00:B2F0)
 00B2F8 = 16, 16, 16
 00B2FA = 48, 48, 48
 00B2FC = 88, 88, 88
 
-; --- Mario sur la carte, assorti au ciré ($00:B57C, ligne 10)
-00B59C = 184, 128, 0      ; ombre du ciré
-00B59E = 248, 200, 0      ; ciré jaune
+; --- Mario sur la carte, assorti à la marinière ($00:B57C, ligne 10)
+00B59C = 168, 176, 200    ; ombre du blanc
+00B59E = 240, 240, 248    ; chemise / casquette blanches
 00B5A0 = 40, 56, 112      ; pantalon bleu marine
 
 ; --- Buissons des niveaux : les petites croix beiges deviennent des fleurs

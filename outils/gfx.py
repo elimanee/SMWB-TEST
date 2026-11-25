@@ -198,3 +198,29 @@ def apply_drawing(all_tiles, tiles, w, pix):
     for k, t in enumerate(tiles):
         ox, oy = (k % w) * 8, (k // w) * 8
         all_tiles[t] = [[pix[oy + y][ox + x] for x in range(8)] for y in range(8)]
+
+
+# --- tuiles 4bpp (graphismes de Mario, GFX32) ------------------------------------
+def decode4(data):
+    tiles = []
+    for t in range(len(data) // 32):
+        b = t * 32
+        tiles.append([[((data[b + y * 2] >> (7 - x)) & 1) | (((data[b + y * 2 + 1] >> (7 - x)) & 1) << 1) |
+                       (((data[b + 16 + y * 2] >> (7 - x)) & 1) << 2) |
+                       (((data[b + 17 + y * 2] >> (7 - x)) & 1) << 3) for x in range(8)] for y in range(8)])
+    return tiles
+
+
+def encode4(tiles):
+    out = bytearray()
+    for tile in tiles:
+        p = bytearray(32)
+        for y in range(8):
+            for x in range(8):
+                c, bit = tile[y][x], 1 << (7 - x)
+                if c & 1: p[y * 2] |= bit
+                if c & 2: p[y * 2 + 1] |= bit
+                if c & 4: p[16 + y * 2] |= bit
+                if c & 8: p[17 + y * 2] |= bit
+        out += p
+    return bytes(out)
