@@ -4,7 +4,7 @@ Romhack de *Super Mario World* (SNES, version US) sur le thème de la Bretagne :
 Mario traverse le Pays Bigouden, les Monts d'Arrée, les grottes de Morgat,
 Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 
-## État actuel (version 0.2 : textes et premiers graphismes)
+## État actuel (version 0.3 : textes, décors, objets et Mario)
 
 ### Graphismes
 
@@ -21,7 +21,18 @@ Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
   blanche au lieu de sa couronne, au combat final (« HELP! ») et dans les
   scènes de fin.
 
+- **Décor des niveaux** : les grands piliers bleu-vert du fond deviennent
+  des menhirs de granit gris (alignements façon Carnac), et les petits
+  buissons fleurissent en jaune comme des ajoncs.
+- **Objets** : le champignon est remplacé par une crêpe pliée en quatre, avec
+  la confiture le long du pli. Le 1-up est la même crêpe avec une garniture
+  verte.
+- **Mario** : en ciré jaune de marin (le suroît remplace la casquette) avec un
+  pantalon bleu marine, sur la carte comme dans les niveaux. Mario de feu est
+  en Gwenn ha Du : chemise blanche et salopette noire.
+
 ![Captures](docs/captures.png)
+![Niveau](docs/captures_niveau.png)
 
 ### Textes
 
@@ -108,6 +119,12 @@ Zones de la ROM modifiées (aucun nouveau code ASM) :
 | GFX1C, GFX1D | collines de la carte → menhirs |
 | GFX1E | icônes de la carte : forteresse → phare, ruines → Gwenn ha Du |
 | GFX22, GFX24, GFX26 | la Princesse : couronne → coiffe bigoudène |
+| GFX00 | champignon / 1-up → crêpe |
+| GFX1B | piliers du fond des niveaux : ovales → grain de granit |
+| `$00:B0C8-$00:B0DF` | palette de fond n°1 : piliers → granit |
+| `$00:B25E` | buissons : croix beiges → fleurs d'ajonc jaunes |
+| `$00:B2CE-$00:B2D9`, `$00:B2F8-$00:B2FD` | Mario (ciré jaune, pantalon marine) et Mario de feu (Gwenn ha Du) |
+| `$00:B59C-$00:B5A1` | Mario sur la carte |
 | `$00:B3F6-$00:B3F9` | palette de la carte du Pays Bigouden : vert des collines → granit |
 | `$00:FFDC-$00:FFDF` | somme de contrôle recalculée |
 
@@ -124,8 +141,9 @@ Magic), sans mélanger les deux pour ces textes-là.
 
 Avec Lunar Magic (Windows) et les outils de SMW Central :
 
-- **Graphismes** : menhirs et calvaires dans les niveaux eux-mêmes,
-  crêpes / galettes comme objets, Gwenn ha Du sur le panneau de fin de niveau.
+- **Graphismes** : calvaires et phares dans les niveaux, bolée de cidre ou
+  kouign-amann pour d'autres objets, marinière à rayures pour Mario (demande
+  de redessiner toutes ses poses), Gwenn ha Du sur le panneau de fin de niveau.
 - **Palettes** : landes violettes (bruyère) pour les Monts d'Arrée, granit
   rose, mer verte et grise pour Ouessant.
 - **Carte** : retracer le monde aux contours de la péninsule bretonne.

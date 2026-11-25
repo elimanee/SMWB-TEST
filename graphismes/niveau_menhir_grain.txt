@@ -1,0 +1,13 @@
+; Niveaux : fond des piliers du premier plan (GFX1B). L'ovale clair est
+; remplacé par un grain de granit. La tuile est répétée retournée en dessous.
+; Couleurs (palette de fond 0) : 3 granit sombre, 4 granit, 7 reflet
+fichier = 1B
+tuiles = 14
+44444444
+44434444
+44444444
+43444474
+44444444
+44447444
+44444434
+44444444

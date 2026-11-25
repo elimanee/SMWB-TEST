@@ -3,3 +3,41 @@
 ; les collines vertes deviennent du granit gris.
 00B3F6 = 96, 96, 104      ; couleur 2 : granit sombre
 00B3F8 = 160, 160, 168    ; couleur 3 : granit
+
+; --- Décor des niveaux : jeu de palettes de fond n°1 ($00:B0C8, 12 couleurs)
+; Les grands piliers bleu-vert du fond deviennent des menhirs de granit gris,
+; comme les alignements de Carnac. (Le ciel garde sa couleur.)
+00B0C8 = 64, 72, 88       ; piliers du premier plan : ombre
+00B0CA = 112, 120, 136    ;   granit
+00B0CC = 160, 168, 176    ;   reflet
+00B0CE = 144, 152, 160    ; piliers du fond : ombre
+00B0D0 = 176, 184, 192    ;   granit
+00B0D2 = 208, 212, 216    ;   reflet (et nuages lointains)
+00B0D4 = 64, 72, 88
+00B0D6 = 112, 120, 136
+00B0D8 = 160, 168, 176
+00B0DA = 64, 72, 88
+00B0DC = 112, 120, 136
+00B0DE = 160, 168, 176
+
+; --- Mario en ciré jaune de marin, pantalon bleu marine ($00:B2C8)
+00B2CE = 248, 200, 0      ; ciré / suroît : jaune
+00B2D6 = 184, 128, 0      ;   ombre
+00B2D8 = 248, 240, 120    ;   reflet
+00B2D0 = 16, 24, 72       ; pantalon bleu marine : ombre
+00B2D2 = 40, 56, 112      ;   bleu marine
+00B2D4 = 72, 104, 168     ;   reflet
+
+; --- Mario de feu en Gwenn ha Du : chemise blanche, salopette noire ($00:B2F0)
+00B2F8 = 16, 16, 16
+00B2FA = 48, 48, 48
+00B2FC = 88, 88, 88
+
+; --- Mario sur la carte, assorti au ciré ($00:B57C, ligne 10)
+00B59C = 184, 128, 0      ; ombre du ciré
+00B59E = 248, 200, 0      ; ciré jaune
+00B5A0 = 40, 56, 112      ; pantalon bleu marine
+
+; --- Buissons des niveaux : les petites croix beiges deviennent des fleurs
+; jaunes -> des ajoncs en fleur (couleur partagée, utilisée seulement là)
+00B25E = 248, 216, 32

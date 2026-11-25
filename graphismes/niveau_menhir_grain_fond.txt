@@ -1,0 +1,11 @@
+; Niveaux : même chose pour les piliers du fond (couleur 7, grain en 6)
+fichier = 1B
+tuiles = 30
+77777777
+77767777
+77777777
+76777767
+77777777
+77776777
+77777777
+77777777
