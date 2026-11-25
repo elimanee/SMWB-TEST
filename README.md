@@ -4,7 +4,7 @@ Romhack de *Super Mario World* (SNES, version US) sur le thème de la Bretagne :
 Mario traverse le Pays Bigouden, les Monts d'Arrée, les grottes de Morgat,
 Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 
-## État actuel (version 0.4 : Mario en marinière)
+## État actuel (version 0.5 : tous les objets)
 
 ### Graphismes
 
@@ -24,9 +24,17 @@ Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 - **Décor des niveaux** : les grands piliers bleu-vert du fond deviennent
   des menhirs de granit gris (alignements façon Carnac), et les petits
   buissons fleurissent en jaune comme des ajoncs.
-- **Objets** : le champignon est remplacé par une crêpe pliée en quatre, avec
-  la confiture le long du pli. Le 1-up est la même crêpe avec une garniture
-  verte.
+- **Objets** :
+  - champignon → **crêpe** pliée en quatre (le 1-up : la même, garniture verte) ;
+  - pièces → **palets bretons**, y compris leur animation de rotation dans les
+    niveaux (face quadrillée, trois-quarts, tranche, dessous) et quand elles
+    jaillissent d'un bloc ;
+  - pièces Dragon → pièces d'or à la **moucheture d'hermine** (elles gardent
+    leur scintillement) ;
+  - étoile → **coquille Saint-Jacques** (elle clignote toujours) ;
+  - plume → **plume de goéland**, blanche au bout noir ;
+  - fleur de feu → **bouquet d'ajonc** ;
+  - baies des buissons → **pommes à cidre** rouges, roses et vertes.
 - **Mario en marinière** : chemise blanche à rayures bleu marine, dessinées
   dans toutes ses poses, casquette blanche de marin et salopette bleue (sur la
   carte aussi). Mario de feu porte une marinière à rayures noires avec une
@@ -34,6 +42,7 @@ Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 
 ![Captures](docs/captures.png)
 ![Niveau](docs/captures_niveau.png)
+![Objets](docs/captures_objets.png)
 
 ### Textes
 
@@ -122,7 +131,11 @@ Zones de la ROM modifiées (aucun nouveau code ASM) :
 | GFX1C, GFX1D | collines de la carte → menhirs |
 | GFX1E | icônes de la carte : forteresse → phare, ruines → Gwenn ha Du |
 | GFX22, GFX24, GFX26 | la Princesse : couronne → coiffe bigoudène |
-| GFX00 | champignon / 1-up → crêpe |
+| GFX00 | crêpe, coquille, plume de goéland, ajonc |
+| GFX01 | palet quand une pièce jaillit d'un bloc |
+| GFX14 | pièce Dragon → hermine |
+| GFX17 | baies → pommes |
+| GFX33 (`$08:BFC0`) | tuiles animées : rotation des pièces → palets |
 | GFX1B | piliers du fond des niveaux : ovales → grain de granit |
 | `$00:B0C8-$00:B0DF` | palette de fond n°1 : piliers → granit |
 | `$00:B25E` | buissons : croix beiges → fleurs d'ajonc jaunes |
@@ -145,9 +158,8 @@ Magic), sans mélanger les deux pour ces textes-là.
 
 Avec Lunar Magic (Windows) et les outils de SMW Central :
 
-- **Graphismes** : calvaires et phares dans les niveaux, bolée de cidre ou
-  kouign-amann pour d'autres objets, Gwenn ha Du sur le panneau de fin de
-  niveau.
+- **Graphismes** : calvaires et phares dans les niveaux, Gwenn ha Du sur le
+  panneau de fin de niveau, bloc « ? » breton.
 - **Palettes** : landes violettes (bruyère) pour les Monts d'Arrée, granit
   rose, mer verte et grise pour Ouessant.
 - **Carte** : retracer le monde aux contours de la péninsule bretonne.

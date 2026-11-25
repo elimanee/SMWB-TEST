@@ -4,6 +4,7 @@ réinsertion dans la ROM, et dessins décrits en texte (dossier graphismes/).
 Format d'un fichier graphismes/*.txt :
     fichier = 1E                 ; numéro du fichier GFX (hexa)
     tuiles = 0A 0B 1A 1B         ; tuiles 8x8 : haut-gauche haut-droite bas-gauche bas-droite
+    largeur = 1                  ; (facultatif) nombre de tuiles par rangée, 2 par défaut
     (puis autant de lignes que de pixels, un caractère par pixel)
 Caractères : '.' = transparent (couleur 0), '1'-'7' = couleurs 1 à 7 de la palette.
 Pour 2 tuiles de large, 16 caractères par ligne ; 16 lignes pour 2 de haut.
@@ -119,7 +120,14 @@ def lz2_compress(data):
 
 
 # --- accès aux fichiers GFX dans la ROM ----------------------------------------
+# Fichiers hors de la table : GFX33 (tuiles animées et Yoshi), juste après
+# GFX32 (Mario). Ils doivent tenir à leur place.
+FIXED = {0x33: 0x043FC0}
+
+
 def gfx_pc(rom, num):
+    if num in FIXED:
+        return FIXED[num]
     a = (rom[PTR_BK + num] << 16) | (rom[PTR_HI + num] << 8) | rom[PTR_LO + num]
     return snes_to_pc(a)
 
@@ -154,6 +162,8 @@ def write_gfx(rom, num, tiles, free=None):
     if len(comp) <= old:
         rom[pc:pc + old] = comp + b"\xFF" * (old - len(comp))
         return "GFX%02X : %d octets (place d'origine %d)" % (num, len(comp), old)
+    if num in FIXED:
+        raise ValueError("GFX%02X : %d octets, ne tient plus (%d)" % (num, len(comp), old))
     free = FREE_GFX if free is None else free
     for k, (addr, size) in enumerate(free):
         if size >= len(comp):
@@ -183,7 +193,7 @@ def parse_drawing(path):
             rows.append(line.strip())
     num = int(meta["fichier"], 16)
     tiles = [int(t, 16) for t in meta["tuiles"].split()]
-    w = 2 if len(tiles) >= 2 else 1
+    w = int(meta.get("largeur", 2 if len(tiles) >= 2 else 1))
     h = (len(tiles) + w - 1) // w
     if len(rows) != h * 8 or any(len(r) != w * 8 for r in rows):
         raise ValueError("%s : il faut %d lignes de %d caractères" % (path, h * 8, w * 8))
