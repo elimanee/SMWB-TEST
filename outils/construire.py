@@ -8,6 +8,7 @@ Produit :
   patch/SMW_Bretagne.bps        le patch à partager
   build/apercu_*.png            aperçus des textes avec la police du jeu
 """
+import glob
 import hashlib
 import os
 import sys
@@ -15,9 +16,11 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import bps
+import coiffe
+import gfx
 import messages
 import noms_niveaux
-from smwrom import CLEAN_SHA1, fix_checksum
+from smwrom import CLEAN_SHA1, fix_checksum, snes_to_pc
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -31,6 +34,38 @@ def load_clean_rom(path):
         sys.exit("Cette ROM n'est pas une Super Mario World (USA) d'origine (SHA-1 %s).\n"
                  "Il faut la ROM propre, SHA-1 %s." % (sha, CLEAN_SHA1))
     return data
+
+
+def apply_graphics(rom):
+    """Dessins de graphismes/*.txt et couleurs de graphismes/palettes.txt."""
+    folder = os.path.join(ROOT, "graphismes")
+    files = {}
+    for path in sorted(glob.glob(os.path.join(folder, "*.txt"))):
+        if os.path.basename(path) == "palettes.txt":
+            continue
+        num, tiles, w, pix = gfx.parse_drawing(path)
+        if num not in files:
+            files[num] = gfx.read_gfx(rom, num)
+        gfx.apply_drawing(files[num], tiles, w, pix)
+        print("Dessin : %s" % os.path.basename(path))
+    for num in coiffe.FILES:
+        if num not in files:
+            files[num] = gfx.read_gfx(rom, num)
+    print("Coiffes bigoudènes : %d" % coiffe.apply(files))
+    for num in sorted(files):
+        print("  " + gfx.write_gfx(rom, num, files[num]))
+        assert gfx.read_gfx(rom, num) == files[num], "relecture GFX%02X différente" % num
+    pal = os.path.join(folder, "palettes.txt")
+    if os.path.exists(pal):
+        for line in open(pal, encoding="utf-8"):
+            line = line.split(";", 1)[0].strip()
+            if not line:
+                continue
+            addr, rgb = line.split("=")
+            r, g, b = (int(v) >> 3 for v in rgb.split(","))
+            v = r | g << 5 | b << 10
+            p = snes_to_pc(int(addr.strip(), 16))
+            rom[p] = v & 0xFF; rom[p + 1] = v >> 8
 
 
 def main():
@@ -51,6 +86,8 @@ def main():
     back = messages.read_messages(rom)
     for i, lines in msgs.items():
         assert [l.rstrip() for l in lines] == back[i], "relecture du message %d différente" % i
+
+    apply_graphics(rom)
 
     fix_checksum(rom)
     rom = bytes(rom)

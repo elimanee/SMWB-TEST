@@ -1,0 +1,21 @@
+; Carte : ruines d'un château vaincu, avec le Gwenn ha Du planté dessus
+; (remplace le petit drapeau blanc). Palette 5, couleurs 9-15 :
+; 1 noir, 2 gris-bleu, 3 gris clair, 4 blanc, 5 vert foncé, 6 vert, 7 vert clair
+fichier = 1E
+tuiles = 0A 0B 1A 1B
+.....13144411111
+.....13141444441
+.....13144411111
+.....13144444441
+.....13111111111
+.....131........
+.....1311.111...
+.111.1161.161...
+.161.16361121...
+.161113336621...
+.1666633333111..
+11132111133161..
+16111166111121..
+163313336666211.
+1111111111111111
+111111111111111.

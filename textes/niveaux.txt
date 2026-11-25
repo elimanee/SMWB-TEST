@@ -36,7 +36,7 @@
 01 = MORGAT SECRET 2
 02 = MORGAT SECRET 3
 2B = MANOIR KORRIGAN        ; Vanilla Ghost House
-0B = FORT DE BERTHEAUME     ; Vanilla Fortress
+0B = PHARE DU MINOU         ; Vanilla Fortress (icone : phare)
 3F = PALAIS ROUGE           ; Red Switch Palace
 40 = #3 CHATEAU DE DINAN    ; #3 Lemmy's Castle
 
@@ -55,7 +55,7 @@
 43 = BROCELIANDE 4
 41 = TOMBEAU DE MERLIN      ; Forest Ghost House
 46 = FONTAINE BARENTON      ; Forest Secret Area
-1F = VAL SANS RETOUR        ; Forest Fortress
+1F = PHARE DE PAIMPONT      ; Forest Fortress (icone : phare)
 45 = PALAIS BLEU            ; Blue Switch Palace
 20 = #5 FORT DE COMPER      ; #5 Roy's Castle
 
@@ -67,7 +67,7 @@
 1C = ILE D'OUESSANT 5
 21 = PHARE HANTE            ; Choco-Ghost House
 3B = OUESSANT SECRET        ; Chocolate Secret
-1B = FORT DE MOLENE         ; Chocolate Fortress
+1B = PHARE DU CREAC'H       ; Chocolate Fortress (icone : phare)
 1A = #6 FORT DE SUSCINIO    ; #6 Wendy's Castle
 18 = LA VILLE D'YS          ; Sunken Ghost Ship (la cite engloutie)
 
@@ -77,7 +77,7 @@
 37 = VALLEE DE L'ANKOU 3
 33 = VALLEE DE L'ANKOU 4
 38 = CHAPELLE HANTEE        ; Valley Ghost House
-35 = FORT DE L'ANKOU        ; Valley Fortress
+35 = PHARE DE L'ANKOU       ; Valley Fortress (icone : phare)
 34 = #7 FORT DE FOUGERES    ; #7 Larry's Castle
 31 = GRANDE PORTE           ; Front Door
 32 = PORTE DEROBEE          ; Back Door
