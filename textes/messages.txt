@@ -1,0 +1,87 @@
+; Boîtes de message. Format :
+;   [NN] commentaire
+;   texte libre, coupé automatiquement en lignes de 18 caractères (8 lignes max)
+;   |  force un retour à la ligne
+;   =  en début de ligne : ligne recopiée telle quelle (espaces compris)
+;   {XX} : tuile brute en hexa (ex. la signature de Yoshi)
+; Pas d'accents (ils sont retirés automatiquement), chiffres 0 à 7 seulement.
+
+[0] Palais a bouton (texte commun aux 4 palais) — garder la 5e ligne vide et la ligne "en" a sa place (les blocs y sont dessines)
+=- PALAIS BOUTON -
+=Le pouvoir de ce
+=bouton va changer
+=les blocs
+=
+=       en      .
+=Ta progression est
+=sauvegardee.
+
+[4] Introduction (debut du jeu)
+Degemer mat! Bienvenue en Bretagne. Dans ce pays de legendes, la Princesse Toadstool a encore disparu! Bowser est de retour!
+
+[5] Pays Bigouden 1 - reserve d'objet
+=-PAROLE DE DRUIDE-
+Tu peux garder un objet en reserve dans la boite en haut de l'ecran. Pour l'utiliser, appuie sur SELECT.
+
+[6] Pays Bigouden 2 - mi-parcours
+=-PAROLE DE DRUIDE-
+Ce portail marque le milieu du niveau. Si tu coupes le ruban ici, tu repartiras de ce point.
+
+[7] Pays Bigouden 3 - rebond
+Quand tu sautes sur un ennemi, tiens le bouton de saut pour rebondir haut. Dans l'eau peu profonde, appuie sur Haut pour sauter.
+
+[8] Pays Bigouden 4 - etoiles bonus
+Coupe le ruban a la fin de chaque niveau pour gagner des etoiles bonus. Avec 100 etoiles, tu joues a un jeu bonus, comme au fest-noz!
+
+[9] Maison de l'Ankou (maison hantee)
+Ceci est la maison de l'Ankou. Trouveras-tu la sortie? Hi, hi, hi... Ne te perds pas dans la brume!
+
+[10] Monts d'Arree 1 - cape
+Utilise la cape de Mario pour planer comme un goeland! Cours, saute et tiens le bouton Y. Gauche et droite gardent l'equilibre.
+
+[11] Pays Bigouden 1 - carapaces
+=-PAROLE DE DRUIDE-
+Pour prendre une carapace, utilise X ou Y. Pour la lancer en l'air, regarde en haut et lache le bouton.
+
+[12] Monts d'Arree 1 - points rouges
+Les points rouges de la carte ont deux sorties. Si tu as le temps et l'adresse, cherche-les bien!
+
+[13] Maison secrete - Carnac
+Il y a cinq passages vers les menhirs de Carnac en Bretagne. Trouve-les tous et tu pourras voyager vite d'un bout a l'autre du pays.
+
+[14] Zone speciale
+Incroyable! Peu de gens sont venus jusqu'ici. Plus loin se trouve la Zone Speciale. Finis-la pour voir un monde etrange.|CHANS VAT!
+
+[15] Pays Bigouden 3 - pieces dragon
+=-PAROLE DE DRUIDE-
+Les grosses pieces sont des pieces Dragon. Si tu en ramasses cinq dans un niveau, tu gagnes une vie!
+
+[16] Ile d'Ouessant 2 - sortie speciale
+Ici, les pieces ramassees ou le temps restant peuvent changer ta route. Trouveras-tu la sortie speciale?
+
+[17] Fort La Latte - grillage
+Appuie sur Haut en sautant pour t'accrocher au grillage. Pour franchir la porte au bout du niveau, appuie aussi sur Haut.
+
+[18] Fort La Latte - Iggy
+=-PAROLE DE DRUIDE-
+Un ami de Yoshi est enferme dans ce fort par Iggy Koopa. Pour le vaincre, pousse-le dans la lave.
+
+[19] Monts d'Arree 3 - L et R
+Appuie sur L ou R pour faire defiler l'ecran. Tu verras plus loin, comme du haut d'un phare.
+
+[20] Pays Bigouden 4 - quitter un niveau
+Si tu as deja fini un niveau, tu peux revenir a la carte en appuyant sur START puis sur SELECT.
+
+[21] Pays Bigouden 2 - saut tourbillon
+Pour faire un saut tourbillon, appuie sur A. Super Mario peut ainsi casser des blocs et battre des ennemis coriaces.
+
+[22] Ker Yoshi - le mot de Yoshi (garder les 2 dernieres lignes)
+Demat! Je ne suis pas la, je suis parti sauver mes amis captures par Bowser. Il reste du kouign amann!
+=                {60}{61}
+=         - Yoshi{62}{63}
+
+[23] Ker Yoshi - blocs en pointilles
+On peut remplir les blocs en pointilles. Pour les jaunes, va a l'ouest puis au nord, en haut de la montagne.
+
+[24] Yoshi delivre
+Youpi! Trugarez de m'avoir sauve! Je m'appelle Yoshi. En partant sauver mes amis, Bowser m'a enferme dans cet oeuf.

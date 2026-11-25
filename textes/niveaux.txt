@@ -1,0 +1,117 @@
+; Noms des niveaux sur la carte — format : TRANSLEVEL (hexa) = NOM
+; 19 caractères maximum. Lettres sans accents, chiffres 0 à 7 seulement
+; (la police d'origine n'a ni 8 ni 9), ponctuation : ! . - , ? # ( ) '
+; L'outil découpe et compresse les noms tout seul ; s'il refuse, réutilisez
+; davantage les mêmes mots ou raccourcissez.
+; Entre parenthèses : le niveau d'origine.
+
+; --- Monde 1 : Pays Bigouden (Yoshi's Island) ---
+28 = KER YOSHI              ; Yoshi's House (Ker = maison/village)
+29 = PAYS BIGOUDEN 1        ; Yoshi's Island 1
+2A = PAYS BIGOUDEN 2
+27 = PAYS BIGOUDEN 3
+26 = PAYS BIGOUDEN 4
+14 = PALAIS JAUNE           ; Yellow Switch Palace
+25 = #1 FORT LA LATTE       ; #1 Iggy's Castle
+
+; --- Monde 2 : Monts d'Arree (Donut Plains) ---
+15 = MONTS D'ARREE 1        ; Donut Plains 1
+09 = MONTS D'ARREE 2
+05 = MONTS D'ARREE 3
+06 = MONTS D'ARREE 4
+0A = ARREE SECRET 1         ; Donut Secret 1
+2F = ARREE SECRET 2
+04 = MAISON DE L'ANKOU      ; Donut Ghost House
+13 = MAISON SECRETE         ; Donut Secret House
+03 = COIN TRES SECRET       ; Top Secret Area
+08 = PALAIS VERT            ; Green Switch Palace
+07 = #2 CHATEAU DE VITRE    ; #2 Morton's Castle
+
+; --- Monde 3 : Grottes de Morgat (Vanilla Dome) ---
+3E = GROTTES DE MORGAT 1    ; Vanilla Dome 1
+3C = GROTTES DE MORGAT 2
+2E = GROTTES DE MORGAT 3
+3D = GROTTES DE MORGAT 4
+2D = MORGAT SECRET 1        ; Vanilla Secret 1
+01 = MORGAT SECRET 2
+02 = MORGAT SECRET 3
+2B = MANOIR KORRIGAN        ; Vanilla Ghost House
+0B = FORT DE BERTHEAUME     ; Vanilla Fortress
+3F = PALAIS ROUGE           ; Red Switch Palace
+40 = #3 CHATEAU DE DINAN    ; #3 Lemmy's Castle
+
+; --- Monde 4 : les ponts et le lac (Twin Bridges) ---
+0C = PONT DE TERENEZ 1      ; Butter Bridge 1
+0D = PONT DE TERENEZ 2
+0F = PONT DE RECOUVRANCE    ; Cheese Bridge Area
+11 = LAC DE GUERLEDAN       ; Soda Lake
+10 = MENEZ HOM              ; Cookie Mountain
+0E = #4 CHATEAU DE BREST    ; #4 Ludwig's Castle
+
+; --- Monde 5 : Broceliande (Forest of Illusion) ---
+42 = BROCELIANDE 1          ; Forest of Illusion 1
+44 = BROCELIANDE 2
+47 = BROCELIANDE 3
+43 = BROCELIANDE 4
+41 = TOMBEAU DE MERLIN      ; Forest Ghost House
+46 = FONTAINE BARENTON      ; Forest Secret Area
+1F = VAL SANS RETOUR        ; Forest Fortress
+45 = PALAIS BLEU            ; Blue Switch Palace
+20 = #5 FORT DE COMPER      ; #5 Roy's Castle
+
+; --- Monde 6 : Ile d'Ouessant (Chocolate Island) ---
+22 = ILE D'OUESSANT 1       ; Chocolate Island 1
+24 = ILE D'OUESSANT 2
+23 = ILE D'OUESSANT 3
+1D = ILE D'OUESSANT 4
+1C = ILE D'OUESSANT 5
+21 = PHARE HANTE            ; Choco-Ghost House
+3B = OUESSANT SECRET        ; Chocolate Secret
+1B = FORT DE MOLENE         ; Chocolate Fortress
+1A = #6 FORT DE SUSCINIO    ; #6 Wendy's Castle
+18 = LA VILLE D'YS          ; Sunken Ghost Ship (la cite engloutie)
+
+; --- Monde 7 : Vallee de l'Ankou (Valley of Bowser) ---
+3A = VALLEE DE L'ANKOU 1    ; Valley of Bowser 1
+39 = VALLEE DE L'ANKOU 2
+37 = VALLEE DE L'ANKOU 3
+33 = VALLEE DE L'ANKOU 4
+38 = CHAPELLE HANTEE        ; Valley Ghost House
+35 = FORT DE L'ANKOU        ; Valley Fortress
+34 = #7 FORT DE FOUGERES    ; #7 Larry's Castle
+31 = GRANDE PORTE           ; Front Door
+32 = PORTE DEROBEE          ; Back Door
+
+; --- Star World -> les menhirs ---
+12 = ROUTE DES MENHIRS      ; Star Road
+16 = ROUTE DES MENHIRS
+1E = ROUTE DES MENHIRS
+2C = ROUTE DES MENHIRS
+30 = ROUTE DES MENHIRS
+48 = ROUTE DES MENHIRS
+4D = ROUTE DES MENHIRS
+52 = ROUTE DES MENHIRS
+53 = ROUTE DES MENHIRS
+55 = ROUTE DES MENHIRS
+57 = ROUTE DES MENHIRS
+5B = ROUTE DES MENHIRS
+5C = ROUTE DES MENHIRS
+58 = CARNAC 1               ; Star World 1
+54 = CARNAC 2
+56 = CARNAC 3
+59 = CARNAC 4
+5A = CARNAC 5
+
+; --- Special Zone -> expressions bretonnes ---
+4E = DEMAT                  ; Gnarly (bonjour)
+4F = KENAVO                 ; Tubular (au revoir)
+50 = TRUGAREZ               ; Way Cool (merci)
+51 = FEST NOZ               ; Awesome
+4C = KOUIGN AMANN           ; Groovy
+4B = GWENN HA DU            ; Mondo (le drapeau breton)
+4A = YEC'HED MAT            ; Outrageous (sante !)
+49 = KRAMPOUEZH             ; Funky (les crepes)
+
+; Translevels inutilises dans le jeu d'origine (Morton's Plains 3)
+17 = MONTS D'ARREE 3
+19 = MONTS D'ARREE 3

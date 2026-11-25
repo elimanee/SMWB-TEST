@@ -1,0 +1,5 @@
+# ROM et fichiers générés : ne jamais publier la ROM
+*.sfc
+*.smc
+build/
+__pycache__/
