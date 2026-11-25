@@ -175,7 +175,6 @@ Avec Lunar Magic (Windows) et les outils de SMW Central :
 
 - **Graphismes** : Gwenn ha Du sur le panneau de fin de niveau, phares dans
   les décors de fond d'Ouessant, accents manquants (È, Ê majuscules…).
-- **Palettes** : landes violettes (bruyère) pour les Monts d'Arrée, granit
-  rose, mer verte et grise pour Ouessant.
+- **Palettes** : granit rose (Ploumanac'h), mer verte et grise pour Ouessant.
 - **Carte** : retracer le monde aux contours de la péninsule bretonne.
 - **Musique** : airs de biniou / bombarde (addmusicK).
