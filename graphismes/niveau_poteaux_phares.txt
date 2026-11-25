@@ -1,0 +1,23 @@
+; Niveaux : les poteaux d'arrivée deviennent deux phares à bandes (GFX17,
+; tuiles des Map16 $39-$3B : sommet $20/$21, milieu $22/$23 répété en hauteur).
+; Poteau de devant (palette 7) : bandes rouges et blanches ; poteau de
+; derrière (palette 4) : bandes grises et blanches.
+; Couleurs : 1 blanc, 2 contour, 3 ombre des bandes, 4 bandes, 7 ombre du blanc
+fichier = 17
+tuiles = 20 21 22 23
+......2222......
+.....233332.....
+....23333332....
+...2222222222...
+...2112112112...
+...2112112112...
+.22222222222222.
+2111111111111772
+2111111111111772
+2111111111111772
+2111111111111772
+2111111111111772
+2444444444444332
+2444444444444332
+2444444444444332
+2444444444444332

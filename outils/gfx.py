@@ -6,7 +6,8 @@ Format d'un fichier graphismes/*.txt :
     tuiles = 0A 0B 1A 1B         ; tuiles 8x8 : haut-gauche haut-droite bas-gauche bas-droite
     largeur = 1                  ; (facultatif) nombre de tuiles par rangée, 2 par défaut
     (puis autant de lignes que de pixels, un caractère par pixel)
-Caractères : '.' = transparent (couleur 0), '1'-'7' = couleurs 1 à 7 de la palette.
+Caractères : '.' = transparent (couleur 0), '1'-'7' = couleurs 1 à 7 de la palette
+(1 à 3 pour les fichiers 2bpp : la police GFX2A, etc.).
 Pour 2 tuiles de large, 16 caractères par ligne ; 16 lignes pour 2 de haut.
 """
 from smwrom import snes_to_pc, pc_to_snes, lz2_decompress
@@ -16,6 +17,29 @@ PTR_LO, PTR_HI, PTR_BK = snes_to_pc(0x00B992), snes_to_pc(0x00B9C4), snes_to_pc(
 # Espace libre (rempli de $FF dans la ROM d'origine) où placer un fichier GFX
 # recompressé qui ne tiendrait plus à sa place.
 FREE_GFX = [(0x0EF0F0, 0x0F0000 - 0x0EF0F0 - 0x10)]
+
+
+# Fichiers en 2bpp (police et barre d'état, couche 3)
+TWO_BPP = {0x28, 0x29, 0x2A, 0x2B}
+
+
+# --- tuiles 2bpp ---------------------------------------------------------------
+def decode2(data):
+    return [[[((data[t * 16 + y * 2] >> (7 - x)) & 1) | (((data[t * 16 + y * 2 + 1] >> (7 - x)) & 1) << 1)
+              for x in range(8)] for y in range(8)] for t in range(len(data) // 16)]
+
+
+def encode2(tiles):
+    out = bytearray()
+    for tile in tiles:
+        p = bytearray(16)
+        for y in range(8):
+            for x in range(8):
+                c, bit = tile[y][x], 1 << (7 - x)
+                if c & 1: p[y * 2] |= bit
+                if c & 2: p[y * 2 + 1] |= bit
+        out += p
+    return bytes(out)
 
 
 # --- tuiles 3bpp ---------------------------------------------------------------
@@ -149,12 +173,13 @@ def compressed_size(rom, pc):
 
 
 def read_gfx(rom, num):
-    return decode3(lz2_decompress(rom, gfx_pc(rom, num)))
+    data = lz2_decompress(rom, gfx_pc(rom, num))
+    return decode2(data) if num in TWO_BPP else decode3(data)
 
 
 def write_gfx(rom, num, tiles, free=None):
     """Recompresse et réinsère un fichier GFX. Renvoie un texte de compte rendu."""
-    data = encode3(tiles)
+    data = encode2(tiles) if num in TWO_BPP else encode3(tiles)
     comp = lz2_compress(data)
     assert lz2_decompress(comp, 0) == data, "erreur du compresseur LZ2"
     pc = gfx_pc(rom, num)

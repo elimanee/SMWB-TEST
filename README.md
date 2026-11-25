@@ -4,7 +4,7 @@ Romhack de *Super Mario World* (SNES, version US) sur le thème de la Bretagne :
 Mario traverse le Pays Bigouden, les Monts d'Arrée, les grottes de Morgat,
 Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 
-## État actuel (version 0.5 : tous les objets)
+## État actuel (version 0.6 : accents, hermine, landes, phares et calvaires)
 
 ### Graphismes
 
@@ -40,7 +40,20 @@ Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
   carte aussi). Mario de feu porte une marinière à rayures noires avec une
   salopette noire : un vrai Gwenn ha Du.
 
+- **Accents** : la police a maintenant é è ê à ç ù î ô É Â Î (dans des
+  tuiles libérées), utilisés dans les messages et les noms de niveaux
+  (Monts d'Arrée, Térénez, Guerlédan, Île d'Ouessant, Château…).
+- **Blocs « ? » à l'hermine** : fourrure blanche à mouchetures noires,
+  « ? » doré, dans les 4 images de leur rotation.
+- **Landes de bruyère** : la montagne des Monts d'Arrée est mauve, et la
+  forêt de Pays Bigouden 2 (même palette) prend des touches mauves.
+- **Phares d'arrivée** : les poteaux de fin de niveau sont deux phares à
+  bandes (rouge et blanc devant, gris et blanc derrière), avec lanterne.
+- **Calvaires** : les poteaux de mi-parcours sont des croix de granit sur leur
+  colonne (ils ne tournent plus).
+
 ![Captures](docs/captures.png)
+![Version 0.6](docs/captures_v06.png)
 ![Niveau](docs/captures_niveau.png)
 ![Objets](docs/captures_objets.png)
 
@@ -113,9 +126,9 @@ scène de fin.
 
 ### Limites de la police
 
-Limites de la police d'origine : **pas d'accents** (ils sont retirés
-automatiquement), **pas de 8 ni de 9**, pas de `:` ; ponctuation disponible :
-`! . - , ? # ( ) '`. Noms de niveaux : 19 caractères max. Messages :
+Police : accents disponibles **é è ê à ç ù î ô** et **É Â Î** (les autres
+sont remplacés par la lettre simple), **pas de 8 ni de 9**, pas de `:` ;
+ponctuation disponible : `! . - , ? # ( ) '`. Noms de niveaux : 19 caractères max. Messages :
 8 lignes de 18 caractères.
 
 ## Notes techniques
@@ -134,8 +147,10 @@ Zones de la ROM modifiées (aucun nouveau code ASM) :
 | GFX00 | crêpe, coquille, plume de goéland, ajonc |
 | GFX01 | palet quand une pièce jaillit d'un bloc |
 | GFX14 | pièce Dragon → hermine |
-| GFX17 | baies → pommes |
-| GFX33 (`$08:BFC0`) | tuiles animées : rotation des pièces → palets |
+| GFX33 (`$08:BFC0`) | tuiles animées : palets, blocs « ? » à l'hermine, poteaux de mi-parcours → calvaires |
+| GFX2A | police : lettres accentuées en `$32-$3C` (anciens mots « ILLUSION » et « YELLOW ») |
+| GFX17 | poteaux d'arrivée → phares (et baies → pommes) |
+| `$00:B158-$00:B163` | palette de fond n°7 : montagnes → bruyère |
 | GFX1B | piliers du fond des niveaux : ovales → grain de granit |
 | `$00:B0C8-$00:B0DF` | palette de fond n°1 : piliers → granit |
 | `$00:B25E` | buissons : croix beiges → fleurs d'ajonc jaunes |
@@ -158,10 +173,9 @@ Magic), sans mélanger les deux pour ces textes-là.
 
 Avec Lunar Magic (Windows) et les outils de SMW Central :
 
-- **Graphismes** : calvaires et phares dans les niveaux, Gwenn ha Du sur le
-  panneau de fin de niveau, bloc « ? » breton.
+- **Graphismes** : Gwenn ha Du sur le panneau de fin de niveau, phares dans
+  les décors de fond d'Ouessant, accents manquants (È, Ê majuscules…).
 - **Palettes** : landes violettes (bruyère) pour les Monts d'Arrée, granit
   rose, mer verte et grise pour Ouessant.
 - **Carte** : retracer le monde aux contours de la péninsule bretonne.
-- **Police** : ajouter é, è, à, ç dans des tuiles libres de GFX2A.
 - **Musique** : airs de biniou / bombarde (addmusicK).

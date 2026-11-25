@@ -43,3 +43,13 @@
 ; --- Buissons des niveaux : les petites croix beiges deviennent des fleurs
 ; jaunes -> des ajoncs en fleur (couleur partagée, utilisée seulement là)
 00B25E = 248, 216, 32
+
+; --- Landes de bruyère : jeu de palettes de fond n°7 ($00:B158), celui des
+; montagnes des Monts d'Arrée (aussi la forêt de Pays Bigouden 2, qui prend
+; des touches mauves). Pentes en bruyère mauve, ombres vertes.
+00B158 = 56, 72, 40       ; ombre sombre (vert)
+00B15A = 48, 104, 32      ; vert
+00B15C = 80, 128, 48      ; vert clair
+00B15E = 152, 88, 160     ; bruyère
+00B160 = 184, 120, 192    ;   claire
+00B162 = 208, 160, 216    ;   reflet

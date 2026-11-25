@@ -23,7 +23,7 @@ ces contraintes (petite recherche locale déterministe).
 """
 import random
 
-from smwrom import snes_to_pc, encode_text, decode_text
+from smwrom import snes_to_pc, encode_text, decode_text, normalize
 
 WORDS = snes_to_pc(0x049AC5)
 SPACE_OFS = 0x1CB
@@ -201,5 +201,7 @@ def parse_file(path):
         if not line.strip():
             continue
         tl, _, name = line.partition("=")
-        names[int(tl.strip(), 16)] = name.strip().upper()
+        name = name.strip().upper()
+        # accents non disponibles dans la police : lettre simple
+        names[int(tl.strip(), 16)] = normalize(name)
     return names

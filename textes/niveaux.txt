@@ -1,5 +1,6 @@
 ; Noms des niveaux sur la carte — format : TRANSLEVEL (hexa) = NOM
-; 19 caractères maximum. Lettres sans accents, chiffres 0 à 7 seulement
+; 19 caractères maximum. Accents en majuscules : É Â Î (les autres sont
+; retirés). Chiffres 0 à 7 seulement
 ; (la police d'origine n'a ni 8 ni 9), ponctuation : ! . - , ? # ( ) '
 ; L'outil découpe et compresse les noms tout seul ; s'il refuse, réutilisez
 ; davantage les mêmes mots ou raccourcissez.
@@ -15,17 +16,17 @@
 25 = #1 FORT LA LATTE       ; #1 Iggy's Castle
 
 ; --- Monde 2 : Monts d'Arree (Donut Plains) ---
-15 = MONTS D'ARREE 1        ; Donut Plains 1
-09 = MONTS D'ARREE 2
-05 = MONTS D'ARREE 3
-06 = MONTS D'ARREE 4
-0A = ARREE SECRET 1         ; Donut Secret 1
-2F = ARREE SECRET 2
+15 = MONTS D'ARRÉE 1        ; Donut Plains 1
+09 = MONTS D'ARRÉE 2
+05 = MONTS D'ARRÉE 3
+06 = MONTS D'ARRÉE 4
+0A = ARRÉE SECRET 1         ; Donut Secret 1
+2F = ARRÉE SECRET 2
 04 = MAISON DE L'ANKOU      ; Donut Ghost House
 13 = MAISON SECRETE         ; Donut Secret House
-03 = COIN TRES SECRET       ; Top Secret Area
+03 = COIN TRÈS SECRET       ; Top Secret Area
 08 = PALAIS VERT            ; Green Switch Palace
-07 = #2 CHATEAU DE VITRE    ; #2 Morton's Castle
+07 = #2 CHÂTEAU DE VITRÉ    ; #2 Morton's Castle
 
 ; --- Monde 3 : Grottes de Morgat (Vanilla Dome) ---
 3E = GROTTES DE MORGAT 1    ; Vanilla Dome 1
@@ -38,21 +39,21 @@
 2B = MANOIR KORRIGAN        ; Vanilla Ghost House
 0B = PHARE DU MINOU         ; Vanilla Fortress (icone : phare)
 3F = PALAIS ROUGE           ; Red Switch Palace
-40 = #3 CHATEAU DE DINAN    ; #3 Lemmy's Castle
+40 = #3 CHÂTEAU DE DINAN    ; #3 Lemmy's Castle
 
 ; --- Monde 4 : les ponts et le lac (Twin Bridges) ---
-0C = PONT DE TERENEZ 1      ; Butter Bridge 1
-0D = PONT DE TERENEZ 2
+0C = PONT DE TÉRÉNEZ 1      ; Butter Bridge 1
+0D = PONT DE TÉRÉNEZ 2
 0F = PONT DE RECOUVRANCE    ; Cheese Bridge Area
-11 = LAC DE GUERLEDAN       ; Soda Lake
-10 = MENEZ HOM              ; Cookie Mountain
-0E = #4 CHATEAU DE BREST    ; #4 Ludwig's Castle
+11 = LAC DE GUERLÉDAN       ; Soda Lake
+10 = MÉNEZ HOM              ; Cookie Mountain
+0E = #4 CHÂTEAU DE BREST    ; #4 Ludwig's Castle
 
 ; --- Monde 5 : Broceliande (Forest of Illusion) ---
-42 = BROCELIANDE 1          ; Forest of Illusion 1
-44 = BROCELIANDE 2
-47 = BROCELIANDE 3
-43 = BROCELIANDE 4
+42 = BROCÉLIANDE 1          ; Forest of Illusion 1
+44 = BROCÉLIANDE 2
+47 = BROCÉLIANDE 3
+43 = BROCÉLIANDE 4
 41 = TOMBEAU DE MERLIN      ; Forest Ghost House
 46 = FONTAINE BARENTON      ; Forest Secret Area
 1F = PHARE DE PAIMPONT      ; Forest Fortress (icone : phare)
@@ -60,27 +61,27 @@
 20 = #5 FORT DE COMPER      ; #5 Roy's Castle
 
 ; --- Monde 6 : Ile d'Ouessant (Chocolate Island) ---
-22 = ILE D'OUESSANT 1       ; Chocolate Island 1
-24 = ILE D'OUESSANT 2
-23 = ILE D'OUESSANT 3
-1D = ILE D'OUESSANT 4
-1C = ILE D'OUESSANT 5
-21 = PHARE HANTE            ; Choco-Ghost House
+22 = ÎLE D'OUESSANT 1       ; Chocolate Island 1
+24 = ÎLE D'OUESSANT 2
+23 = ÎLE D'OUESSANT 3
+1D = ÎLE D'OUESSANT 4
+1C = ÎLE D'OUESSANT 5
+21 = PHARE HANTÉ            ; Choco-Ghost House
 3B = OUESSANT SECRET        ; Chocolate Secret
-1B = PHARE DU CREAC'H       ; Chocolate Fortress (icone : phare)
+1B = PHARE DU CRÉAC'H       ; Chocolate Fortress (icone : phare)
 1A = #6 FORT DE SUSCINIO    ; #6 Wendy's Castle
 18 = LA VILLE D'YS          ; Sunken Ghost Ship (la cite engloutie)
 
 ; --- Monde 7 : Vallee de l'Ankou (Valley of Bowser) ---
-3A = VALLEE DE L'ANKOU 1    ; Valley of Bowser 1
-39 = VALLEE DE L'ANKOU 2
-37 = VALLEE DE L'ANKOU 3
-33 = VALLEE DE L'ANKOU 4
-38 = CHAPELLE HANTEE        ; Valley Ghost House
+3A = VALLÉE DE L'ANKOU 1    ; Valley of Bowser 1
+39 = VALLÉE DE L'ANKOU 2
+37 = VALLÉE DE L'ANKOU 3
+33 = VALLÉE DE L'ANKOU 4
+38 = CHAPELLE HANTÉE        ; Valley Ghost House
 35 = PHARE DE L'ANKOU       ; Valley Fortress (icone : phare)
 34 = #7 FORT DE FOUGERES    ; #7 Larry's Castle
 31 = GRANDE PORTE           ; Front Door
-32 = PORTE DEROBEE          ; Back Door
+32 = PORTE DÉROBÉE          ; Back Door
 
 ; --- Star World -> les menhirs ---
 12 = ROUTE DES MENHIRS      ; Star Road
@@ -113,5 +114,5 @@
 49 = KRAMPOUEZH             ; Funky (les crepes)
 
 ; Translevels inutilises dans le jeu d'origine (Morton's Plains 3)
-17 = MONTS D'ARREE 3
-19 = MONTS D'ARREE 3
+17 = MONTS D'ARRÉE 3
+19 = MONTS D'ARRÉE 3

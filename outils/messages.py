@@ -7,7 +7,7 @@ Format dans la ROM d'origine :
                tuile d'une ligne a le bit 7 mis (le jeu complète avec des espaces)
 Place disponible pour le texte : $05:A5D9-$05:B0FE (2854 octets).
 """
-from smwrom import snes_to_pc, encode_text, decode_text
+from smwrom import snes_to_pc, encode_text, decode_text, normalize
 
 PTRS = snes_to_pc(0x05A5A7)
 TEXT = snes_to_pc(0x05A5D9)
@@ -69,6 +69,7 @@ def parse_file(path):
             cur = int(line[1:line.index("]")])
             msgs[cur] = []
         elif cur is not None and line.strip():
+            line = normalize(line)
             msgs[cur].append(line if line.startswith("=") else line.strip())
     res, errors = {}, []
     for k, v in msgs.items():

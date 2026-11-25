@@ -1,0 +1,41 @@
+; Image 2/4 — Niveaux : les poteaux de mi-parcours deviennent deux calvaires de granit
+; (croix, fût, socle). Ce sont des tuiles animées (GFX33, copiées en VRAM
+; $074-$077) : les 4 images sont identiques, le calvaire ne tourne pas.
+; Le crochet du ruban (3e tuile) reste à droite. Ordre des tuiles :
+; sommet, milieu, crochet, socle (8 pixels de large chacune, de haut en bas).
+; Couleurs : 2 contour, 5 ombre, 6 granit, 7 reflet
+fichier = 33
+largeur = 1
+tuiles = 114 115 116 117
+..2222..
+..2672..
+22267222
+26666652
+25565552
+22265222
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+..265222
+..265211
+..265222
+..2652..
+..2652..
+..2652..
+..2652..
+..2652..
+.266552.
+22666552
+26665552
+25555552
+.255552.
+..2222..

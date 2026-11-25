@@ -56,7 +56,7 @@ def gfx_file_pc(rom, num):
 
 
 # --- Texte (police layer 3, GFX2A) -------------------------------------------
-# Pas d'accents ni de chiffres 8/9 dans la police d'origine.
+# Pas de chiffres 8/9 dans la police d'origine ; les accents sont ajoutés.
 CHARSET = {" ": 0x1F, "!": 0x1A, ".": 0x1B, "-": 0x1C, ",": 0x1D, "?": 0x1E,
            "#": 0x5A, "(": 0x5B, ")": 0x5C, "'": 0x5D}
 for _i in range(26):
@@ -65,15 +65,25 @@ for _i in range(26):
 for _i, _c in enumerate("1234567"):
     CHARSET[_c] = 0x64 + _i
 CHARSET["0"] = 0x6B
+# Lettres accentuées ajoutées dans GFX2A (graphismes/police_accents.txt), à la
+# place des tuiles « ILLUSION » et « YELLOW » des anciens noms de niveaux.
+ACCENTED = "éèêàçùîôÉÂÎ"
+for _i, _c in enumerate(ACCENTED):
+    CHARSET[_c] = 0x32 + _i
 DECODE = {v: k for k, v in CHARSET.items()}
 
 ACCENTS = str.maketrans("àâäéèêëîïôöùûüçœÀÂÄÉÈÊËÎÏÔÖÙÛÜÇŒñÑ’",
                         "aaaeeeeiioouuucoAAAEEEEIIOOUUUCOnN'")
 
 
+def normalize(s):
+    """Remplace les lettres accentuées absentes de la police par la lettre simple."""
+    return "".join(c if c in CHARSET else c.translate(ACCENTS) for c in s).replace("œ", "oe")
+
+
 def encode_text(s, where=""):
     """Encode une chaîne en tuiles. Accepte {XX} pour une tuile brute (hexa)."""
-    s = s.translate(ACCENTS).replace("œ", "oe")
+    s = normalize(s)
     out, i = [], 0
     while i < len(s):
         if s[i] == "{":
