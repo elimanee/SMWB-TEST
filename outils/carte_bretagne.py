@@ -495,3 +495,92 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# ---------------------------------------------------------------------------
+# Version fidèle : contour géographique à l'échelle (proportions réelles), la
+# grande baie centrale devient l'intérieur des terres (Argoat), traversé par
+# des rivières le long des chemins d'eau. Niveaux et chemins ne bougent pas.
+LON_W, LON_E, LAT_N = -4.85, -1.45, 48.87
+STRETCH = 1.0
+def bigouden(lon, lat):
+    """Déformation locale : le sud-ouest (Cap Sizun, Pays Bigouden) descend
+    pour englober le sud des Monts d'Arrée (jusqu'à 10 cases à Penmarc'h)."""
+    f_lat = min(1, max(0, (48.2 - lat) / 0.4))
+    f_lon = min(1, max(0, (-3.0 - lon) / 0.9))
+    return 10 * f_lat * f_lon
+def proj_geo(lon, lat, top=2.5):
+    kx = 64 / (LON_E - LON_W)                 # cases par degré de longitude
+    ky = kx / math.cos(math.radians(48.2)) * STRETCH   # cases par degré de latitude
+    return (lon - LON_W) * kx, top + (LAT_N - lat) * ky + bigouden(lon, lat)
+def outline_geo():
+    pts = [proj_geo(*p) for p in CONTOUR]
+    return pts + [(64.5, pts[-1][1]), (64.5, pts[0][1])]
+ISLANDS3 = [(0, 16, 43, 59), (15, 57, 44, 64), (9, 16, 4, 12)]
+def lakes(cls, max_size=150):
+    """Petites eaux fermées d'origine (lacs) : conservées. La grande baie n'en
+    fait pas partie, même si des rochers la ferment presque."""
+    seen = border_water_open(cls)
+    out = [[False] * 64 for _ in range(64)]; done = set()
+    for y in range(64):
+        for x in range(64):
+            if cls[y][x] != 2 or seen[y][x] or (x, y) in done: continue
+            comp, q = [], deque([(x, y)]); done.add((x, y))
+            while q:
+                cx, cy = q.popleft(); comp.append((cx, cy))
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nx, ny = cx + dx, cy + dy
+                    if 0 <= nx < 64 and 0 <= ny < 64 and cls[ny][nx] == 2 and not seen[ny][nx] and (nx, ny) not in done:
+                        done.add((nx, ny)); q.append((nx, ny))
+            if len(comp) <= max_size:
+                for cx, cy in comp: out[cy][cx] = True
+    return out
+def mask_from(pts):
+    im = Image.new('L', (64 * 8, 64 * 8), 0)
+    ImageDraw.Draw(im).polygon([(x * 8, y * 8) for x, y in pts], fill=255)
+    return [[1 if im.getpixel((x * 8 + 4, y * 8 + 4)) > 127 else 0 for x in range(64)] for y in range(64)]
+def design3(cls, pts=None):
+    M = mask_from(pts or outline_geo())
+    LK = lakes(cls)
+    paths = [(x, y) for y in range(64) for x in range(64) if PATH[y][x]]
+    wpaths = [(x, y) for (x, y) in paths if cls[y][x] == 2]
+    Dp = dist_to(paths); Dw = dist_to(wpaths)
+    T = [[None] * 64 for _ in range(64)]
+    for y in range(64):
+        for x in range(64):
+            land = cls[y][x] != 2
+            if Dp[y][x] == 0: continue                         # chemins : inchangés
+            if M[y][x]:
+                if Dw[y][x] <= 1: T[y][x] = None if land else 0    # rivière le long des chemins d'eau
+                elif Dp[y][x] <= 1: continue                   # abords des chemins de terre
+                elif LK[y][x]: continue                        # lacs
+                else: T[y][x] = 1
+            else:
+                if any(x0 <= x < x1 and y0 <= y < y1 for x0, x1, y0, y1 in ISLANDS3): continue
+                if Dp[y][x] <= 1: continue
+                T[y][x] = 0
+    return T, M
+
+
+def smooth16(cls, T, passes=2):
+    """Lisse le tracé au niveau des blocs 16x16 (filtre majoritaire 3x3) pour
+    supprimer les avancées et trous d'un bloc ; les chemins sont épargnés."""
+    B = binary(cls)
+    N = [[B[y][x] if T[y][x] is None else T[y][x] for x in range(64)] for y in range(64)]
+    prot = [[any(T[by*2+j][bx*2+i] is None for i in (0, 1) for j in (0, 1)) for bx in range(32)] for by in range(32)]
+    blk = [[1 if sum(N[by*2+j][bx*2+i] for i in (0, 1) for j in (0, 1)) >= 2 else 0 for bx in range(32)] for by in range(32)]
+    for _ in range(passes):
+        nb = [r[:] for r in blk]
+        for by in range(32):
+            for bx in range(32):
+                if prot[by][bx]: continue
+                v = [blk[ny][nx] for nx in range(bx-1, bx+2) for ny in range(by-1, by+2) if 0 <= nx < 32 and 0 <= ny < 32]
+                nb[by][bx] = 1 if sum(v) * 2 > len(v) else 0
+        blk = nb
+    T2 = [r[:] for r in T]
+    for by in range(32):
+        for bx in range(32):
+            if prot[by][bx]: continue
+            for i in (0, 1):
+                for j in (0, 1): T2[by*2+j][bx*2+i] = blk[by][bx]
+    return T2
