@@ -16,6 +16,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import bps
+import carte
 import coiffe
 import mariniere
 import gfx
@@ -90,6 +91,7 @@ def main():
         assert [l.rstrip() for l in lines] == back[i], "relecture du message %d différente" % i
 
     apply_graphics(rom)
+    print(carte.apply(rom, os.path.join(ROOT, "carte", "bretagne_cases.txt")))
 
     fix_checksum(rom)
     rom = bytes(rom)

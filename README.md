@@ -4,7 +4,7 @@ Romhack de *Super Mario World* (SNES, version US) sur le thème de la Bretagne :
 Mario traverse le Pays Bigouden, les Monts d'Arrée, les grottes de Morgat,
 Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 
-## État actuel (version 0.6 : accents, hermine, landes, phares et calvaires)
+## État actuel (version 0.7 : la carte en forme de Bretagne)
 
 ### Graphismes
 
@@ -52,6 +52,15 @@ Brocéliande, Ouessant et la Vallée de l'Ankou pour sauver la princesse.
 - **Calvaires** : les poteaux de mi-parcours sont des croix de granit sur leur
   colonne (ils ne tournent plus).
 
+- **Carte du monde en forme de Bretagne** : la carte principale a une côte
+  nord continue, le Finistère dentelé à l'ouest (Rade de Brest, Crozon,
+  baie de Douarnenez, pointe du Raz, baie d'Audierne), la terre qui continue
+  à l'est, et au sud une grande baie ouverte sur l'océan avec ses îlots,
+  l'Île d'Ouessant au large au nord-ouest et deux grandes îles au sud.
+  Les niveaux et les chemins n'ont pas bougé : le contour est stylisé autour
+  d'eux.
+
+![Carte](docs/carte_bretagne.png)
 ![Captures](docs/captures.png)
 ![Version 0.6](docs/captures_v06.png)
 ![Niveau](docs/captures_niveau.png)
@@ -112,6 +121,20 @@ Mario (`outils/mariniere.py`, qui repère sa chemise et y trace une rangée
 marine sur deux). Les graphismes sont recompressés (LC_LZ2) et remis à leur place
 d'origine.
 
+### Carte du monde
+
+La forme de la carte principale est décrite dans
+[`carte/bretagne_cases.txt`](carte/bretagne_cases.txt) (les cases de 8×8
+modifiées). Ce fichier est produit par `outils/carte_bretagne.py`, qui
+analyse la carte d'origine dans l'émulateur, trace le contour de la Bretagne
+(`OUTLINE2`, modifiable) en épargnant chemins, niveaux et îles, puis
+recompose les côtes avec des blocs de la carte d'origine dont les bords se
+raccordent :
+
+```bash
+python3 outils/carte_bretagne.py chemin/vers/Super_Mario_World_USA.sfc
+```
+
 ### Captures d'écran automatiques
 
 Avec l'émulateur Python `stable-retro` (`pip install stable-retro`) :
@@ -151,6 +174,8 @@ Zones de la ROM modifiées (aucun nouveau code ASM) :
 | GFX2A | police : lettres accentuées en `$32-$3C` (anciens mots « ILLUSION » et « YELLOW ») |
 | GFX17 | poteaux d'arrivée → phares (et baies → pommes) |
 | `$00:B158-$00:B163` | palette de fond n°7 : montagnes → bruyère |
+| `$04:A533-$04:D63F` | relief de la carte du monde (couche 2, deux flux RLE recompressés) ; le second flux est déplacé juste après le premier |
+| `$04:DC8C` | opérande de `LDA #$C02B` : nouvelle adresse du flux des attributs |
 | GFX1B | piliers du fond des niveaux : ovales → grain de granit |
 | `$00:B0C8-$00:B0DF` | palette de fond n°1 : piliers → granit |
 | `$00:B25E` | buissons : croix beiges → fleurs d'ajonc jaunes |
@@ -176,5 +201,6 @@ Avec Lunar Magic (Windows) et les outils de SMW Central :
 - **Graphismes** : Gwenn ha Du sur le panneau de fin de niveau, phares dans
   les décors de fond d'Ouessant, accents manquants (È, Ê majuscules…).
 - **Palettes** : granit rose (Ploumanac'h), mer verte et grise pour Ouessant.
-- **Carte** : retracer le monde aux contours de la péninsule bretonne.
+- **Carte** : contour plus fidèle en déplaçant des niveaux et des chemins
+  (gros travail : chemins, événements et positions des niveaux).
 - **Musique** : airs de biniou / bombarde (addmusicK).
