@@ -22,6 +22,7 @@ from PIL import Image, ImageDraw
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from vram import Snap, blocks
+from bretagne_contour import CONTOUR   # contour géographique réel (poly_mask)
 from collections import Counter
 def idx(tx,ty): return ((ty//32)*2+(tx//32))*0x400+(ty%32)*32+tx%32
 S=R=GRID=E1=BG1=PATH=None
